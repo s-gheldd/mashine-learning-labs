@@ -1,11 +1,10 @@
 package main
 
 import (
+	"flag"
 	"log"
 
-	"flag"
-
-	"github.com/s-gheldd/mashine-learning-labs/chinese-room-agent/vacuum"
+	"github.com/s-gheldd/mashine-learning-labs/model-agent/vacuum"
 )
 
 var testCases int
@@ -16,10 +15,10 @@ func init() {
 }
 
 func main() {
-
 	for i := 0; i < testCases; i++ {
+
 		world := vacuum.NewWorld()
-		agent := vacuum.NewAgent()
+		agent := &vacuum.Agent{}
 
 	inner:
 		for {

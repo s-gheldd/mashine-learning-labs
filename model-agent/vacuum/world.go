@@ -2,6 +2,7 @@ package vacuum
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
 	"time"
 )
@@ -17,7 +18,7 @@ func init() {
 
 func NewWorld() *World {
 	world := &World{}
-	world.field = rand.Intn(3)
+	world.field = 1
 	for i := range world.clean {
 		world.clean[i] = rand.Intn(2) == 0
 	}
@@ -25,8 +26,9 @@ func NewWorld() *World {
 }
 
 func (w *World) Perception() *Perception {
+	log.Printf("World state: %+v", *w)
 	return &Perception{
-		Pos:   w.field,
+		Edge:  w.field == 0 || w.field == 2,
 		Clean: w.clean[w.field],
 	}
 }
